@@ -1,7 +1,8 @@
 import numpy as np
 
-def get_folds(n_folds, train_labels, neg_class, pos_class):
-
+def get_folds(n_folds, train_labels, neg_class, pos_class, random_seed):
+    #set numpy random seed
+    np.random.seed(random_seed)
     # Get idx for both classes
     idx_neg = np.argwhere(train_labels == neg_class).ravel()
     idx_pos = np.argwhere(train_labels == pos_class).ravel()

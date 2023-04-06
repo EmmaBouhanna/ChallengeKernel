@@ -16,7 +16,7 @@ def main():
     train_labels = load_data('./data/training_labels.pkl', labels=True, neg_class=NEGATIVE_CLASS)
 
     # Get folds for crossvalidation
-    folds = get_folds(N_FOLDS, train_labels, NEGATIVE_CLASS, POSITIVE_CLASS)
+    folds = get_folds(N_FOLDS, train_labels, NEGATIVE_CLASS, POSITIVE_CLASS, RANDOM_SEED)
 
     # Get Kernel function
     kernel_mat = WLKernel(iterations=WL_ITERS).compute_kernel_matrix
