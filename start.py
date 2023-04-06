@@ -29,7 +29,7 @@ def main():
     else:
         print("Computing kernel matrices")
         K = kernel_mat(train_data, train_data)
-        K_test = kernel_mat(train_data, test_data)
+        K_test = kernel_mat(test_data, train_data)
 
     # Perform crossvalidation
     kp_res = {}
