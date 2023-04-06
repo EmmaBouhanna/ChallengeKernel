@@ -1,7 +1,8 @@
 import pickle
 import numpy as np
 
-def load_data(data_path:str, labels:bool, neg_class:int=None)->np.ndarray:
+
+def load_data(data_path: str, labels: bool, neg_class: int = None) -> np.ndarray:
     with open(data_path, "rb") as f:
         d = pickle.load(f)
     if labels:
@@ -12,6 +13,5 @@ def load_data(data_path:str, labels:bool, neg_class:int=None)->np.ndarray:
             d[d == 0] = - 1
     else:
         d = np.array(d, dtype=object)
-    
-    
+
     return d

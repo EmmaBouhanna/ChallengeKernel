@@ -1,7 +1,8 @@
 import numpy as np
 
+
 def get_folds(n_folds, train_labels, neg_class, pos_class, random_seed):
-    #set numpy random seed
+    # set numpy random seed
     np.random.seed(random_seed)
     # Get idx for both classes
     idx_neg = np.argwhere(train_labels == neg_class).ravel()
@@ -14,7 +15,7 @@ def get_folds(n_folds, train_labels, neg_class, pos_class, random_seed):
         # Get idx for fold
         idx_val_neg = np.random.choice(idx_neg, n_pos//n_folds, replace=False)
         idx_val_pos = np.random.choice(idx_pos, n_pos//n_folds, replace=False)
-        
+
         # Remove them from list of indices, left for the other folds
         idx_neg = np.setdiff1d(idx_neg, idx_val_neg)
         idx_pos = np.setdiff1d(idx_pos, idx_val_pos)
@@ -23,6 +24,7 @@ def get_folds(n_folds, train_labels, neg_class, pos_class, random_seed):
         fold_idx[fold] = np.sort(np.concatenate([idx_val_neg, idx_val_pos]))
 
     return(fold_idx)
+
 
 def get_best_model(res_folds):
     acc_list = [res_folds[fold]['acc'] for fold in res_folds]
